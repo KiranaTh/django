@@ -13,7 +13,7 @@ from core.models import Profile, Email
 
 class IndexView(View):
     def get(self, request):
-        profile = Profile.objects.get(id=4)
+        profile = Profile.objects.get(id=1)
         name = profile.name
         form = SubscriberForm()
         fullname = profile.fullname
@@ -50,14 +50,14 @@ class IndexView(View):
     def post(self, request):
         print(request.POST)
         print(request.POST.get("email"))
-        newEmail = request.POST.get("email")
-        Email.objects.create(email=newEmail)
 
-        profile = Profile.objects.get(id=4)
+        profile = Profile.objects.get(id=1)
         form = SubscriberForm(request.POST)
         if form.is_valid():
             print(form.cleaned_data)
             print(form.cleaned_data.get("email"))
+            newEmail = form.cleaned_data.get("email")
+            Email.objects.create(email=newEmail)
 
         name = profile.name
         
