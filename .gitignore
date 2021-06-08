@@ -1,2 +1,2 @@
-ENV
-*.sqlite3
+db.sqlite3
+ENV/
