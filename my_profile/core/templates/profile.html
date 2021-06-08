@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Jill's Profile</title>
+    <title>{{ name }}'s Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       rel="stylesheet"
@@ -14,12 +14,17 @@
       }
       h1 {
         color: rgb(143, 238, 245);
-        margin: 20px 0px 20px 100px;
       }
       p {
         color: white;
       }
-      .grid-container {
+      .grid-container-2 {
+        margin: 0px 0px 0px 150px;
+        display: grid;
+        grid-template-columns: 350px 350px;
+        grid-gap: 20px;
+      }
+      .grid-container-3 {
         margin: 0px 0px 0px 150px;
         display: grid;
         grid-template-columns: 150px 350px auto;
@@ -61,10 +66,22 @@
   </head>
   <body>
     <div class="round">
-      <h1>Jill's profile</h1>
+      <div class="grid-container-2">
+      <div>
+      <h1>{{ name }}'s profile</h1>
+    </div>
+      <div>
+      <p>Subscribe Me:</p>
+      <form action="." method="POST">
+        {% csrf_token %}
+        {{ form.email }}
+        <button type="submit">Subscribe</button>
+      </div>
+      </form>
+    </div>
     </div>
     <div class="round">
-      <div class="grid-container">
+      <div class="grid-container-3">
         <div>
           <p class="thick">Fullname:</p>
           <p class="thick">Date of Birth:</p>
@@ -75,24 +92,24 @@
           <p class="thick">Position:</p>
         </div>
         <div>
-          <p>Kirana Thanasuttiwat</p>
-          <p>8 October 1998</p>
-          <p>23</p>
-          <p>Computer Science</p>
-          <p>King Mongkut's University of Technology Thonburi</p>
-          <p>ODDS</p>
-          <p>Software Developer</p>
+          <p>{{ fullname }}</p>
+          <p>{{ birthDate }}</p>
+          <p>{{ age }}</p>
+          <p>{{ education }}</p>
+          <p>{{ university }}</p>
+          <p>{{ workplace }}</p>
+          <p>{{ position }}</p>
         </div>
         <img
-          src="https://avatars.githubusercontent.com/u/36392004?v=4"
+          src="{{ pic_url }}"
           style="width: 200px; height: 232px"
         />
       </div>
     </div>
     <div class="round" style="padding: 20px 300px 20px 300px">
-      <a href="https://www.facebook.com/kirana.thanasuttiwat" class="fa fa-facebook" style="margin: 0px 20px 0px 20px"></a>
-      <a href="https://www.instagram.com/jillyjunggg/?hl=en" class="fa fa-instagram" style="margin: 0px 20px 0px 20px"></a>
-      <a href="https://github.com/KiranaTh" class="fa fa-github" style="margin: 0px 20px 0px 20px"></a>
+      <a href="{{ facebook_url }}" class="fa fa-facebook" style="margin: 0px 20px 0px 20px"></a>
+      <a href="{{ instragram_url }}" class="fa fa-instagram" style="margin: 0px 20px 0px 20px"></a>
+      <a href="{{ github_url }}" class="fa fa-github" style="margin: 0px 20px 0px 20px"></a>
     </div>
   </body>
 </html>
