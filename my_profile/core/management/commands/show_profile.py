@@ -1,0 +1,23 @@
+from django.core.management.base import BaseCommand, CommandError
+from core.models import Profile
+
+
+class Command(BaseCommand):
+    help = 'Help text'
+
+    def add_arguments(self, parser):
+        parser.add_argument('id', nargs=1, type=int)
+        parser.add_argument('name', nargs=1, type=str)
+
+    def handle(self, *args, **options):
+        print(args)
+        print(options)
+
+        try:
+            id = options.get("id")[0]
+            print(id)
+            profile = Profile.objects.get(id=id)
+            print(profile.name)
+            print(profile.short_bio)
+        except Exception:
+            raise CommandError("Error!")

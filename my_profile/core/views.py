@@ -28,8 +28,8 @@ class IndexView(View):
         instragram_url = profile.instragram_url
         github_url = profile.github_url
         return render(
-            request, 
-            'profile.html', 
+            request,
+            "profile.html",
             {
                 "name": name,
                 "form": form,
@@ -44,7 +44,7 @@ class IndexView(View):
                 "facebook_url": facebook_url,
                 "instragram_url": instragram_url,
                 "github_url": github_url,
-            }
+            },
         )
 
     def post(self, request):
@@ -60,11 +60,11 @@ class IndexView(View):
             Email.objects.create(email=newEmail)
 
         name = profile.name
-        
+
         return render(
             request,
-            'thank.html',
+            "thank.html",
             {
                 "name": name,
-            }
+            },
         )
