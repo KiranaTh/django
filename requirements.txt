@@ -1,4 +1,4 @@
--r requirements/base.txt
+-r requirements/local.txt
 
 # appdirs==1.4.4
 # asgiref==3.3.4
