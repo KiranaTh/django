@@ -60,3 +60,4 @@ class TestIndexView(TestCase):
         email = Email.objects.last()
         assert response.status_code == 200
         assert email.email == "eskimo.toy@gmail.com"
+        
