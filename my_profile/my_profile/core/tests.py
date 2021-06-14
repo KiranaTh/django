@@ -61,6 +61,7 @@ class TestIndexView(TestCase):
         assert response.status_code == 200
         assert email.email == "eskimo.toy@gmail.com"
 
+
 class TestEmail(TestCase):
     def test_email_should_have_defined_fields(self):
         email = Email.objects.create(

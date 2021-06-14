@@ -19,6 +19,7 @@ from django.urls import path
 from my_profile.core.views import (
     IndexView,
     SubscriberAPIView,
+    ProfileAPIView
 )
 
 urlpatterns = [
@@ -26,4 +27,5 @@ urlpatterns = [
     path('', IndexView.as_view()),
     path('admin/', admin.site.urls),
     path('subscribers/', SubscriberAPIView.as_view()),
+    path('profile/', ProfileAPIView.as_view()),
 ]
