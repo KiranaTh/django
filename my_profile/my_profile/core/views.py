@@ -1,8 +1,13 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.views import View
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import status
 
-from core.forms import SubscriberForm
-from core.models import Profile, Email
+from .forms import SubscriberForm
+from .models import Profile, Email
+from .serializers import SubscriberSerializer
 
 # Create your views here.
 
@@ -68,3 +73,25 @@ class IndexView(View):
                 "name": name,
             },
         )
+
+class SubscriberAPIView(APIView):
+    def get(self, request):
+        # subscriber = Email.objects.first()
+        # serializer = SubscriberSerializer(subscriber)
+        subscriber = Email.objects.all()
+        serializer = SubscriberSerializer(subscriber, many=True)
+
+        return Response(serializer.data)
+        # data = {
+        #     "text": "Hello Subscriber"
+        # }
+        # return JsonResponse(data)
+
+    def post(self, request):
+       serializer = SubscriberSerializer(data=request.data)
+       if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+       return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+ 

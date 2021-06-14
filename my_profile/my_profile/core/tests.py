@@ -1,6 +1,6 @@
 # from django.http import response
 from django.test import TestCase
-from core.models import Profile, Email
+from .models import Profile, Email
 
 
 class TestProfile(TestCase):

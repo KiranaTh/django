@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Profile, Email
+from .models import Profile, Email
 
 
 # Register your models here.
